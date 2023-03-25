@@ -10,7 +10,6 @@ import { CreateTaskForm, IFormInput } from "./components/CreateTaskForm";
 
 
 function App() {
-//{id:number, name:string, date: string, isCompleted: boolean}[]
   const [tasks, setTasks] = useState<TasksInterface []>([
     {
         id: 1, 
@@ -46,13 +45,12 @@ function App() {
 ]);
 
 const createTask = (data:IFormInput):void=>{
-
   const id = Math.random()*11000+ 12;
-  console.log({...data, id});
+  const newTasks = {...data, id};
+  setTasks([...tasks,newTasks ]);
 };
 
 const deleteTask = (id:TasksInterface["id"]):void=>{
-  //console.log(id);
   setTasks(
     tasks.filter((task)=> task.id !==id)
   );
@@ -67,7 +65,6 @@ const toggletask = (id:TasksInterface["id"]):void=>{
   return (
     <div className="App">
       <Header />
-
       <h1>Teste text</h1>
       <CreateTaskForm onCreate={createTask} />
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggletask}/>
