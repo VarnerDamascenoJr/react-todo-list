@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { SubmitHandler,useForm } from "react-hook-form";
 
-
+import "./styles.css";
+import { ButtonDefault } from "../Button";
 
 type FormData = {
     onCreate:(data:IFormInput)=>void
@@ -14,7 +15,6 @@ export interface IFormInput {
 }
 
 export const CreateTaskForm = ({onCreate}: FormData) =>{
-
     const { handleSubmit, register, reset,formState, formState:{ isSubmitSuccessful} } = useForm<IFormInput>({
         defaultValues:{
             name:"",
@@ -32,14 +32,17 @@ useEffect(()=>{
         reset({ name:"", date:"", isCompleted:false });
     }
 },[formState, reset]);
-
     return(
         <form  onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" {...register("name")} />
-            <input type="text" {...register("date")} />
-            <input type="checkbox" {...register("isCompleted")} />
+            <div>
+                <input className="spaceInput" type="text" {...register("name")} />
+            </div>
+            <div>
+                <input className="spaceInput" type="text" {...register("date")} />
+            </div>
+            <input className="checkboxInput" type="checkbox" {...register("isCompleted")} />
             <button type="submit">Add Task</button>
-
+            <ButtonDefault size="small" text="Test"/>
         </form>
     );
 };
