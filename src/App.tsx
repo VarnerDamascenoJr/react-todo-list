@@ -44,6 +44,8 @@ function App() {
 
 ]);
 
+  const [showForm, setShowForm] = useState<boolean>(false);
+ 
 const createTask = (data:IFormInput):void=>{
   const id = Math.random()*11000+ 12;
   const newTasks = {...data, id};
@@ -66,7 +68,8 @@ const toggletask = (id:TasksInterface["id"]):void=>{
     <div className="App">
       <Header />
       <h1>Teste text</h1>
-      <CreateTaskForm onCreate={createTask} />
+      <button onClick={()=>setShowForm(!showForm)}>{showForm ? "Close":"Show Form"}</button>
+      {showForm &&<CreateTaskForm onCreate={createTask} />}
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggletask}/>
     </div>
   );
