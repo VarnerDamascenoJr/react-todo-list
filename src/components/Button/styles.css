@@ -1,0 +1,30 @@
+.small { 
+    padding: 4px 12px;
+}
+.medium {
+    padding: 8px 24px;
+}
+
+.filled {
+    background-color: blue;
+    border:none;
+    border-radius: 4px;
+    color:white;
+    font-weight: 600;
+}
+
+.filled:hover {
+    background-color: rgb(75, 75, 243);
+}
+
+.noFilled{
+    border: 2px solid blue;
+    background-color: white;
+    border-radius: 4px;
+    font-weight: 600;
+
+}
+
+.noFilled:hover {
+    background-color: rgb(233, 231, 231);
+}
