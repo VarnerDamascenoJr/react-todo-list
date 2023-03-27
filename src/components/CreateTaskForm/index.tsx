@@ -42,7 +42,11 @@ useEffect(()=>{
             </div>
             <input className="checkboxInput" type="checkbox" {...register("isCompleted")} />
             <button type="submit">Add Task</button>
-            <ButtonDefault size="small" text="Test"/>
+            <ButtonDefault 
+                fill="filled" 
+                size="small" 
+                text="Test"
+                />
         </form>
     );
 };
