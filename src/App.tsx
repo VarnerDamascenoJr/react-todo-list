@@ -5,6 +5,7 @@ import "./App.css";
 import { Tasks } from "./components/Tasks";
 import { TasksInterface } from "./interface/interface";
 import { CreateTaskForm, IFormInput } from "./components/CreateTaskForm";
+import { ButtonDefault } from "./components/Button";
 
 
 
@@ -68,8 +69,15 @@ const toggletask = (id:TasksInterface["id"]):void=>{
     <div className="App">
       <Header />
       <h1>Teste text</h1>
-      <button onClick={()=>setShowForm(!showForm)}>{showForm ? "Close":"Show Form"}</button>
-      {showForm &&<CreateTaskForm onCreate={createTask} />}
+
+      <ButtonDefault 
+        type="button"
+        fill="noFilled"
+        size="small"
+        text={showForm ? "Close":"Show Form"}
+        onClick={()=>setShowForm(!showForm)}
+      />
+      {showForm && <CreateTaskForm onCreate={createTask} />}
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggletask}/>
     </div>
   );
