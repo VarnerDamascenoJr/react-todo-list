@@ -41,8 +41,8 @@ useEffect(()=>{
                 <input className="spaceInput" type="text" {...register("date")} />
             </div>
             <input className="checkboxInput" type="checkbox" {...register("isCompleted")} />
-            <button type="submit">Add Task</button>
             <ButtonDefault 
+                type="submit"
                 fill="filled" 
                 size="small" 
                 text="Test"
