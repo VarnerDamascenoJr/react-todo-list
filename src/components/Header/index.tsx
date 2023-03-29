@@ -1,9 +1,18 @@
 import React from "react";
+import { ButtonDefault } from "../Button";
 
-export const Header = () =>{
+import "./styles.css";
+
+interface HeaderType {
+    onShow: (showForm:boolean)=> void
+    showForm: boolean
+}
+
+export const Header = ({ showForm ,onShow}:HeaderType) =>{
     return(
-        <nav className="header-nav">
-        Todo List
+        <nav className="container space">
+            <h1 className="title">Todo List </h1>
+            <ButtonDefault fill="filled" size="small" text={showForm ? "Close":"Show Form"}  onClick={()=>onShow(!showForm)} type="button"/>
         </nav>
     );
 };
