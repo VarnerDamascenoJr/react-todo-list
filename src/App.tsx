@@ -5,10 +5,6 @@ import "./App.css";
 import { Tasks } from "./components/Tasks";
 import { TasksInterface } from "./interface/interface";
 import { CreateTaskForm, IFormInput } from "./components/CreateTaskForm";
-import { ButtonDefault } from "./components/Button";
-
-
-
 
 function App() {
   const [tasks, setTasks] = useState<TasksInterface []>([
@@ -45,8 +41,11 @@ function App() {
 
 ]);
 
-  const [showForm, setShowForm] = useState<boolean>(false);
- 
+const [showForm, setShowForm] = useState<boolean>(false);
+
+const showFormButton = ()=>{
+  setShowForm(!showForm);
+};
 const createTask = (data:IFormInput):void=>{
   const id = Math.random()*11000+ 12;
   const newTasks = {...data, id};
@@ -67,18 +66,9 @@ const toggletask = (id:TasksInterface["id"]):void=>{
 
   return (
     <div className="App">
-      <Header />
-      <h1>Teste text</h1>
-
-      <ButtonDefault 
-        type="button"
-        fill="noFilled"
-        size="small"
-        text={showForm ? "Close":"Show Form"}
-        onClick={()=>setShowForm(!showForm)}
-      />
+      <Header showForm={showForm} onShow={showFormButton} />
       {showForm && <CreateTaskForm onCreate={createTask} />}
-      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggletask}/>
+      {tasks.length <= 1 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggletask}/> : <h4>No Tasks</h4>}
     </div>
   );
 }
