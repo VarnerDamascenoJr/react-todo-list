@@ -68,7 +68,7 @@ const toggletask = (id:TasksInterface["id"]):void=>{
     <div className="App">
       <Header showForm={showForm} onShow={showFormButton} />
       {showForm && <CreateTaskForm onCreate={createTask} />}
-      {tasks.length <= 1 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggletask}/> : <h4>No Tasks</h4>}
+      {tasks.length ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggletask}/> : <h4>No Tasks</h4>}
     </div>
   );
 }
