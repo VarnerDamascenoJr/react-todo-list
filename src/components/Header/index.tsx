@@ -8,7 +8,7 @@ interface HeaderType {
     showForm: boolean
 }
 
-export const Header = ({ showForm ,onShow}:HeaderType) =>{
+export const Header = ({ showForm , onShow}:HeaderType) =>{
     return(
         <nav className="container space">
             <h1 className="title">Todo List </h1>
